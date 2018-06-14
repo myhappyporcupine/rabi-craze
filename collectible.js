@@ -1,12 +1,12 @@
 class Collectible {
   constructor(xPos, yPos, radius, drawContext) {
     // Metrics
-    this.xPos = xPos;
-    this.yPos = yPos;
-    this.radius = radius;
+    this.xPos     = xPos;
+    this.yPos     = yPos;
+    this.radius   = radius;
     this.rotation = 0;
     // Deltas
-    this.yPosDelta = 3;
+    this.yPosDelta     = 3;
     this.rotationDelta = 0.04;
     // Helper Rect
     this.isHelperRect = false;
