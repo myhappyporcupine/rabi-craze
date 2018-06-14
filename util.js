@@ -1,16 +1,34 @@
 const inputs = {
   left  : false,
-  right : false
+  up    : false,
+  right : false,
+  down  : false,
+  a     : false,
+  w     : false,
+  d     : false,
+  s     : false
 }
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowLeft')  inputs.left  = true;
+  if (event.key === 'ArrowUp')    inputs.up    = true;
   if (event.key === 'ArrowRight') inputs.right = true;
+  if (event.key === 'ArrowDown')  inputs.down  = true;
+  if (event.key === 'a')          inputs.a     = true;
+  if (event.key === 'w')          inputs.w     = true;
+  if (event.key === 'd')          inputs.d     = true;
+  if (event.key === 's')          inputs.s     = true;
 });
 
 document.addEventListener('keyup', (event) => {
   if (event.key === 'ArrowLeft')  inputs.left  = false;
+  if (event.key === 'ArrowUp')    inputs.up    = false;
   if (event.key === 'ArrowRight') inputs.right = false;
+  if (event.key === 'ArrowDown')  inputs.down  = false;
+  if (event.key === 'a')          inputs.a     = false;
+  if (event.key === 'w')          inputs.w     = false;
+  if (event.key === 'd')          inputs.d     = false;
+  if (event.key === 's')          inputs.s     = false;
 });
 
 function collision(rect1, rect2) {

@@ -19,11 +19,11 @@ class Player {
     this.maxRightArmRotation =  Math.PI/6;
     this.minRightArmRotation = -Math.PI/6;
     // Deltas
-    this.xPosDelta             = 8;
-    this.bodyRotationDelta     = 0.05;
-    this.headRotationDelta     = 0.03;
-    this.leftArmRotationDelta  = 0.05;
-    this.rightArmRotationDelta = 0.05;
+    this.xPosDelta             =  5;
+    this.bodyRotationDelta     =  0.05;
+    this.headRotationDelta     =  0.03;
+    this.leftArmRotationDelta  =  0.05;
+    this.rightArmRotationDelta = -0.05;
     // Appearance Booleans
     this.isBeard      = true;
     this.isHat        = true;

@@ -19,12 +19,12 @@ class Wife {
     this.maxRightArmRotation =  Math.PI/6;
     this.minRightArmRotation = -Math.PI/6;
     // Deltas
-    this.xPosDelta             =  0;
+    this.xPosDelta             =  5;
     this.yPosDelta             =  2;
     this.bodyRotationDelta     =  0.04;
     this.headRotationDelta     =  0.05;
-    this.leftArmRotationDelta  = -0.06;
-    this.rightArmRotationDelta =  0.06;
+    this.leftArmRotationDelta  =  0.06;
+    this.rightArmRotationDelta = -0.06;
     // Appearance Booleans
     this.isHair       = true;
     this.isHelperRect = false;
