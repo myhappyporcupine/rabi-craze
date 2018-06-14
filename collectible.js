@@ -6,7 +6,7 @@ class Collectible {
     this.radius = radius;
     this.rotation = 0;
     // Deltas
-    this.yPosDelta = 2;
+    this.yPosDelta = 3;
     this.rotationDelta = 0.04;
     // Helper Rect
     this.isHelperRect = false;

@@ -1,32 +1,32 @@
 class Player {
   constructor(xPos, yPos, bodyRadius, drawContext) {
     // Metrics
-    this.xPos = xPos;
-    this.yPos = yPos;
+    this.xPos       = xPos;
+    this.yPos       = yPos;
     this.bodyRadius = bodyRadius;
     // Rotation Angles
-    this.bodyRotation = 0;
-    this.headRotation = 0;
-    this.leftArmRotation = 0;
+    this.bodyRotation     = 0;
+    this.headRotation     = 0;
+    this.leftArmRotation  = 0;
     this.rightArmRotation = 0;
     // Rotation Limits
-    this.maxBodyRotation = Infinity;
-    this.minBodyRotation = -Infinity;
-    this.maxHeadRotation = Math.PI/8;
-    this.minHeadRotation = -Math.PI/8;
-    this.maxLeftArmRotation = Math.PI/6;
-    this.minLeftArmRotation = -Math.PI/6;
-    this.maxRightArmRotation = Math.PI/6;
+    this.maxBodyRotation     =  Infinity;
+    this.minBodyRotation     = -Infinity;
+    this.maxHeadRotation     =  Math.PI/8;
+    this.minHeadRotation     = -Math.PI/8;
+    this.maxLeftArmRotation  =  Math.PI/6;
+    this.minLeftArmRotation  = -Math.PI/6;
+    this.maxRightArmRotation =  Math.PI/6;
     this.minRightArmRotation = -Math.PI/6;
     // Deltas
-    this.xPosDelta = 8;
-    this.bodyRotationDelta = 0.05;
-    this.headRotationDelta = 0.03;
-    this.leftArmRotationDelta = 0.05;
+    this.xPosDelta             = 8;
+    this.bodyRotationDelta     = 0.05;
+    this.headRotationDelta     = 0.03;
+    this.leftArmRotationDelta  = 0.05;
     this.rightArmRotationDelta = 0.05;
     // Appearance Booleans
-    this.isBeard = true;
-    this.isHat = true;
+    this.isBeard      = true;
+    this.isHat        = true;
     this.isHelperRect = false;
     // Drawing Context
     this.drawContext = drawContext;
