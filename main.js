@@ -2,16 +2,16 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-const jew = new Player(400, 550, 50, ctx);
+const rabi = new Rabi(400, 550, 50, ctx);
 const wife = new Wife(200, 550, 50, ctx);
 
 function handleInput() {
-  if (inputs.left)    jew.xPos             -= jew.xPosDelta;
-  if (inputs.up)    { jew.leftArmRotation  += jew.leftArmRotationDelta;
-                      jew.rightArmRotation += jew.rightArmRotationDelta; }
-  if (inputs.right)   jew.xPos             += jew.xPosDelta;
-  if (inputs.down)  { jew.leftArmRotation  -= jew.leftArmRotationDelta;
-                      jew.rightArmRotation -= jew.rightArmRotationDelta; }
+  if (inputs.left)    rabi.xPos             -= rabi.xPosDelta;
+  if (inputs.up)    { rabi.leftArmRotation  += rabi.leftArmRotationDelta;
+                      rabi.rightArmRotation += rabi.rightArmRotationDelta; }
+  if (inputs.right)   rabi.xPos             += rabi.xPosDelta;
+  if (inputs.down)  { rabi.leftArmRotation  -= rabi.leftArmRotationDelta;
+                      rabi.rightArmRotation -= rabi.rightArmRotationDelta; }
 
   if (inputs.a)       wife.xPos             -= wife.xPosDelta;
   if (inputs.w)     { wife.leftArmRotation  += wife.leftArmRotationDelta;
@@ -28,6 +28,6 @@ function handleInput() {
 
   handleInput();
 
-  jew.draw();
+  rabi.draw();
   wife.draw();
 })();

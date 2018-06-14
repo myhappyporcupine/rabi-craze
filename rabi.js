@@ -1,4 +1,4 @@
-class Player {
+class Rabi {
   constructor(xPos, yPos, bodyRadius, drawContext) {
     // Metrics
     this.xPos       = xPos;
