@@ -1,9 +1,5 @@
-// Canvas Variables
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-const rabi = new Rabi(400, 550, 50, ctx);
-const wife = new Wife(200, 550, 50, ctx);
+const rabi = new Rabi(400, 450, 50);
+const wife = new Wife(200, 450, 50);
 
 function handleInput() {
   if (inputs.left)       rabi.xPos             -= rabi.xPosDelta;
@@ -40,9 +36,9 @@ function handleInput() {
 (function frame() {
   requestAnimationFrame(frame);
 
-  background(ctx);
-
   handleInput();
+
+  background();
 
   rabi.draw();
   wife.draw();

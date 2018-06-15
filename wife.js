@@ -1,5 +1,5 @@
 class Wife {
-  constructor(xPos, yPos, bodyRadius, drawContext) {
+  constructor(xPos, yPos, bodyRadius) {
     // Metrics
     this.xPos       = xPos;
     this.yPos       = yPos;
@@ -28,8 +28,6 @@ class Wife {
     // Appearance Booleans
     this.isHair       = true;
     this.isHelperRect = false;
-    // Drawing Context
-    this.drawContext = drawContext;
   }
 
   move() {
@@ -92,9 +90,6 @@ class Wife {
   }
 
   draw() {
-    // Drawing Context
-    const ctx = this.drawContext;
-
     // Helper Rect
     if (this.isHelperRect) {
       const boundingRect = this.boundingRect();

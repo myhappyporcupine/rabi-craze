@@ -1,5 +1,5 @@
 class Collectible {
-  constructor(xPos, yPos, radius, drawContext) {
+  constructor(xPos, yPos, radius) {
     // Metrics
     this.xPos     = xPos;
     this.yPos     = yPos;
@@ -10,8 +10,6 @@ class Collectible {
     this.rotationDelta = 0.04;
     // Helper Rect
     this.isHelperRect = false;
-    // Drawing Context
-    this.drawContext = drawContext;
   }
 
   fall() {
@@ -33,9 +31,6 @@ class Collectible {
   }
 
   draw() {
-    // Drawing Context
-    const ctx = this.drawContext;
-
     if (this.isHelperRect) {
       const boundingRect = this.boundingRect();
       ctx.strokeStyle = 'rgba(127, 127, 127, 1)';

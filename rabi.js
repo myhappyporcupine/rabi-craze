@@ -1,5 +1,5 @@
 class Rabi {
-  constructor(xPos, yPos, bodyRadius, drawContext) {
+  constructor(xPos, yPos, bodyRadius) {
     // Metrics
     this.xPos       = xPos;
     this.yPos       = yPos;
@@ -28,12 +28,9 @@ class Rabi {
     this.isBeard      = true;
     this.isHat        = true;
     this.isHelperRect = false;
-    // Drawing Context
-    this.drawContext = drawContext;
   }
 
   move() {
-    const canvas = this.drawContext.canvas;
     this.xPos += this.xPosDelta;
     if (this.xPos + 2*this.bodyRadius > canvas.width) {
       this.xPos = canvas.width - 2*this.bodyRadius;
@@ -99,9 +96,6 @@ class Rabi {
   }
 
   draw() {
-    // Drawing Context
-    const ctx = this.drawContext;
-
     // Helper Rect
     if (this.isHelperRect) {
       const boundingRect = this.boundingRect();

@@ -1,3 +1,6 @@
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
 const inputs = {
   left     : false,
   up       : false,
@@ -75,8 +78,6 @@ function collision(rect1, rect2) {
            y1 - h2 <= y2 && y2 <= y1 + h1    )
 }
 
-function background(drawContext) {
-  const ctx = drawContext;
-
-  drawContext.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+function background() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
