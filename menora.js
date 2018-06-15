@@ -1,4 +1,4 @@
-class Collectible {
+class Menora {
   constructor(xPos, yPos, radius) {
     // Metrics
     this.xPos     = xPos;
