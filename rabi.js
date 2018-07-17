@@ -1,3 +1,8 @@
+// Styles
+let rabiBodyStyle = 'rgba(0, 0, 0, 1)';
+const rabiSkinStyle = 'rgba(255, 229, 204, 1)';
+
+// Rabi
 class Rabi {
   constructor(xPos, yPos, bodyRadius) {
     // Metrics
@@ -109,7 +114,7 @@ class Rabi {
     ctx.rotate(this.bodyRotation);
     ctx.beginPath();
     ctx.arc(0, 0, this.bodyRadius, 0, 2*Math.PI, false);
-    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+    ctx.fillStyle = rabiBodyStyle;
     ctx.fill();
 
     // Head
@@ -118,7 +123,7 @@ class Rabi {
     ctx.rotate(this.headRotation);
     ctx.beginPath();
     ctx.arc(0, 0, this.bodyRadius/2, 0, 2*Math.PI, false);
-    ctx.fillStyle = 'rgba(255, 229, 204, 1)';
+    ctx.fillStyle = rabiSkinStyle;
     ctx.fill();
     // Beard
     if (this.isBeard) {

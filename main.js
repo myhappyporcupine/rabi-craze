@@ -1,21 +1,18 @@
+// Game Variables
+let score = 0;
+let frameCount = 0;
+let menorasFrameCount = 0;
+
 // Menoras
 const numberOfMenoras = 30;
 const menoraRadius = 20;
-const menorasVerticalOffset = -menoraRadius;
-const menorasVerticalSpread = 400;
+const menorasVerticalOffset = -1.5 * menoraRadius;
+const menorasFrameOffset = 60;
 const menoras = [];
-for (let i = 0; i < numberOfMenoras; i++) {
-  const x = random(menoraRadius, canvas.width - menoraRadius);
-  const y = menorasVerticalOffset - i * menorasVerticalSpread;
-  const menora = new Menora(x, y, menoraRadius);
-  menora.isHelperRect = true;
-  menoras.push(menora);
-}
 
 // Rabi
 const rabiRadius = 50;
 const rabi = new Rabi(400, canvas.height - rabiRadius, rabiRadius);
-rabi.isHelperRect = true;
 
 // Canvas Rect
 const canvasRect = {
@@ -25,8 +22,19 @@ const canvasRect = {
   height : canvas.height
 };
 
-function visible(rect) {
-  return collision(rect, canvasRect);
+function createMenora() {
+  const x = randomInteger(menoraRadius, canvas.width - menoraRadius);
+  const y = menorasVerticalOffset;
+  const menora = new Menora(x, y, menoraRadius);
+  menoras.push(menora);
+}
+
+function destroyMenora(index) {
+  menoras.splice(index, 1);
+}
+
+function lost(menora) {
+  return (menora.boundingRect().y > canvas.height);
 }
 
 function handleInput() {
@@ -44,7 +52,10 @@ function handleInput() {
   handleInput();
   background();
 
-  // Menoras
+  // Create Menora
+  if (menorasFrameCount == 0) createMenora();
+
+  // Update Menoras
   for (menora of menoras) {
     menora.rotate();
     menora.fall();
@@ -57,4 +68,18 @@ function handleInput() {
   rabi.rotateLeftArm();
   rabi.rotateRightArm();
   rabi.draw();
+
+  // Handle Menora Interaction
+  for (let i = menoras.length-1; i >= 0; i--) {
+    if (collision(menoras[i].boundingRect(), rabi.boundingRect())) {
+      destroyMenora(i);
+      score++;
+    } else if (lost(menoras[i])) {
+      destroyMenora(i);
+    }
+  }
+
+  // Update Counts
+  frameCount++;
+  if (++menorasFrameCount > menorasFrameOffset) menorasFrameCount = 0;
 })();
