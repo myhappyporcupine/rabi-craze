@@ -6,20 +6,20 @@ const inputs = {
   up       : false,
   right    : false,
   down     : false,
-	home     : false,
-	pageup   : false,
-	end      : false,
-	pagedown : false,
-	enter		 : false,
+  home     : false,
+  pageup   : false,
+  end      : false,
+  pagedown : false,
+  enter    : false,
   a        : false,
   w        : false,
   d        : false,
   s        : false,
-	q        : false,
-	e        : false,
-	z        : false,
+  q        : false,
+  e        : false,
+  z        : false,
   c        : false,
-	r				 : false
+  r        : false
 }
 
 document.addEventListener('keydown', (event) => {
@@ -63,6 +63,14 @@ document.addEventListener('keyup', (event) => {
   if (event.key === 'c')          inputs.c        = false;
   if (event.key === 'r')          inputs.r        = false;
 });
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function randomInteger(min, max) {
+  return Math.floor(random(min, max + 1));
+}
 
 function collision(rect1, rect2) {
   const x1 = rect1.x,

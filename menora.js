@@ -7,7 +7,7 @@ class Menora {
     this.rotation = 0;
     // Deltas
     this.yPosDelta     = 3;
-    this.rotationDelta = 0.04;
+    this.rotationDelta = 0.06;
     // Helper Rect
     this.isHelperRect = false;
   }

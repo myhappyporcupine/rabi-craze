@@ -10,8 +10,8 @@ class Rabi {
     this.leftArmRotation  = 0;
     this.rightArmRotation = 0;
     // Rotation Limits
-    this.maxBodyRotation     =  Infinity;
-    this.minBodyRotation     = -Infinity;
+    this.maxBodyRotation     =  Math.PI/8;
+    this.minBodyRotation     = -Math.PI/8;
     this.maxHeadRotation     =  Math.PI/8;
     this.minHeadRotation     = -Math.PI/8;
     this.maxLeftArmRotation  =  Math.PI/6;
@@ -20,7 +20,7 @@ class Rabi {
     this.minRightArmRotation = -Math.PI/6;
     // Deltas
     this.xPosDelta             =  5;
-    this.bodyRotationDelta     =  0.05;
+    this.bodyRotationDelta     =  0.02;
     this.headRotationDelta     =  0.03;
     this.leftArmRotationDelta  =  0.05;
     this.rightArmRotationDelta = -0.05;

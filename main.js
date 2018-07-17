@@ -1,5 +1,33 @@
-const rabi = new Rabi(400, 450, 50);
-const wife = new Wife(200, 450, 50);
+// Menoras
+const numberOfMenoras = 30;
+const menoraRadius = 20;
+const menorasVerticalOffset = -menoraRadius;
+const menorasVerticalSpread = 400;
+const menoras = [];
+for (let i = 0; i < numberOfMenoras; i++) {
+  const x = random(menoraRadius, canvas.width - menoraRadius);
+  const y = menorasVerticalOffset - i * menorasVerticalSpread;
+  const menora = new Menora(x, y, menoraRadius);
+  menora.isHelperRect = true;
+  menoras.push(menora);
+}
+
+// Rabi
+const rabiRadius = 50;
+const rabi = new Rabi(400, canvas.height - rabiRadius, rabiRadius);
+rabi.isHelperRect = true;
+
+// Canvas Rect
+const canvasRect = {
+  x      : 0,
+  y      : 0,
+  width  : canvas.width,
+  height : canvas.height
+};
+
+function visible(rect) {
+  return collision(rect, canvasRect);
+}
 
 function handleInput() {
   if (inputs.left)       rabi.xPos             -= rabi.xPosDelta;
@@ -8,38 +36,25 @@ function handleInput() {
   if (inputs.right)      rabi.xPos             += rabi.xPosDelta;
   if (inputs.down)     { rabi.leftArmRotation  -= rabi.leftArmRotationDelta;
                          rabi.rightArmRotation -= rabi.rightArmRotationDelta; }
-	if (inputs.home)       rabi.headRotation     -= rabi.headRotationDelta;
-	if (inputs.pageup)     rabi.headRotation     += rabi.headRotationDelta;
-	if (inputs.end)        rabi.bodyRotation     -= rabi.bodyRotationDelta;
-	if (inputs.pagedown)   rabi.bodyRotation     += rabi.bodyRotationDelta;
-	if (inputs.enter)    { rabi.leftArmRotation   = 0;
-                         rabi.rightArmRotation  = 0;
-                         rabi.headRotation      = 0;
-												 rabi.bodyRotation      = 0;                          }
-
-  if (inputs.a)          wife.xPos             -= wife.xPosDelta;
-  if (inputs.w)        { wife.leftArmRotation  += wife.leftArmRotationDelta;
-                         wife.rightArmRotation += wife.rightArmRotationDelta; }
-  if (inputs.d)          wife.xPos             += wife.xPosDelta;
-  if (inputs.s)        { wife.leftArmRotation  -= wife.leftArmRotationDelta;
-                         wife.rightArmRotation -= wife.rightArmRotationDelta; }
-	if (inputs.q)          wife.headRotation     -= wife.headRotationDelta;
-	if (inputs.e)          wife.headRotation     += wife.headRotationDelta;
-	if (inputs.z)          wife.bodyRotation     -= wife.bodyRotationDelta;
-	if (inputs.c)          wife.bodyRotation     += wife.bodyRotationDelta;
-	if (inputs.r)        { wife.leftArmRotation   = 0;
-                         wife.rightArmRotation  = 0;
-                         wife.headRotation      = 0;
-												 wife.bodyRotation      = 0;                          }
 }
 
 (function frame() {
+  // Setup
   requestAnimationFrame(frame);
-
   handleInput();
-
   background();
 
+  // Menoras
+  for (menora of menoras) {
+    menora.rotate();
+    menora.fall();
+    menora.draw();
+  }
+
+  // Rabi
+  rabi.rotateHead();
+  rabi.rotateBody();
+  rabi.rotateLeftArm();
+  rabi.rotateRightArm();
   rabi.draw();
-  wife.draw();
 })();
