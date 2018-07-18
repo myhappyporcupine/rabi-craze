@@ -1,27 +1,30 @@
-// Game States
+// Game Constants
 const GAME_STATES = {
   START : 0,
   PLAY  : 1,
-  PAUSE : 2
+  PAUSE : 2,
+  OVER  : 3
 }
-let gameState = GAME_STATES.START;
-
-// Game Variables
-let score = 0;
-let frameCount = 0;
-let menorasFrameCount = 0;
-
 // Menoras
 const numberOfMenoras = 30;
 const menoraRadius = 20;
 const menorasVerticalOffset = -1.5 * menoraRadius;
 const menorasFrameOffset = 60;
 const menoras = [];
-
 // Rabi
 const rabiRadius = 50;
 const rabi = new Rabi(400, canvas.height - rabiRadius, rabiRadius);
 
+// Game Variables
+let score = 0;
+let frameCount = 0;
+let menorasFrameCount = 0;
+let menorasToGo = numberOfMenoras;
+let gameState = GAME_STATES.START;
+
+// DOM Configuration
+// Font
+ctx.font = '24px serif';
 // Handlers
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
@@ -38,9 +41,6 @@ document.addEventListener('keydown', (event) => {
     }
   }
 });
-
-// Configuration
-ctx.font = '24px serif';
 
 // Functions
 function createMenora() {
@@ -80,7 +80,10 @@ function handleInput() {
       handleInput();
 
       // Menoras
-      if (menorasFrameCount == 0) createMenora();
+      if (menorasFrameCount == 0 && menorasToGo > 0) {
+        menorasToGo--;
+        createMenora();
+      }
       for (menora of menoras) {
         menora.rotate();
         menora.fall();
@@ -117,5 +120,12 @@ function handleInput() {
       ctx.fillText('Paused', 100, 100);
       ctx.fillText('Press space to continue', 200, 200);
       break;
+
+    case GAME_STATES.OVER:
+      ctx.fillText('Game Over', 100, 100);
+      ctx.fillText('You\'ve collected ' + score + ' menoras out of ' + numberOfMenoras, 200, 200);
+      break;
   }
+
+  if (menorasToGo == 0 && menoras.length == 0) gameState = GAME_STATES.OVER;
 })();
