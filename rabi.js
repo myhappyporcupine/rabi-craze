@@ -24,7 +24,7 @@ class Rabi {
     this.maxRightArmRotation =  Math.PI/6;
     this.minRightArmRotation = -Math.PI/6;
     // Deltas
-    this.xPosDelta             =  5;
+    this.xPosDelta             =  8;
     this.bodyRotationDelta     =  0.02;
     this.headRotationDelta     =  0.03;
     this.leftArmRotationDelta  =  0.05;

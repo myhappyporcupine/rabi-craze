@@ -19,7 +19,8 @@ const inputs = {
   e        : false,
   z        : false,
   c        : false,
-  r        : false
+  r        : false,
+  space    : false
 }
 
 document.addEventListener('keydown', (event) => {
@@ -41,6 +42,7 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'z')          inputs.z        = true;
   if (event.key === 'c')          inputs.c        = true;
   if (event.key === 'r')          inputs.r        = true;
+  if (event.key === ' ')          inputs.space    = true;
 });
 
 document.addEventListener('keyup', (event) => {
@@ -62,6 +64,7 @@ document.addEventListener('keyup', (event) => {
   if (event.key === 'z')          inputs.z        = false;
   if (event.key === 'c')          inputs.c        = false;
   if (event.key === 'r')          inputs.r        = false;
+  if (event.key === ' ')          inputs.space    = false;
 });
 
 function random(min, max) {
