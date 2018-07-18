@@ -14,13 +14,8 @@ const menoras = [];
 const rabiRadius = 50;
 const rabi = new Rabi(400, canvas.height - rabiRadius, rabiRadius);
 
-// Canvas Rect
-const canvasRect = {
-  x      : 0,
-  y      : 0,
-  width  : canvas.width,
-  height : canvas.height
-};
+// 2D Context Alterations
+ctx.font = '24px serif';
 
 function createMenora() {
   const x = randomInteger(menoraRadius, canvas.width - menoraRadius);
@@ -82,4 +77,7 @@ function handleInput() {
   // Update Counts
   frameCount++;
   if (++menorasFrameCount > menorasFrameOffset) menorasFrameCount = 0;
+
+  // Display Score
+  ctx.fillText('Score: ' + score, 5, 24);
 })();
