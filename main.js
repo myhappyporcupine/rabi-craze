@@ -15,6 +15,12 @@ const menoras = [];
 const rabiRadius = 50;
 const rabi = new Rabi(400, canvas.height - rabiRadius, rabiRadius);
 
+// Game Over Animation Tweens
+const headRotationTween     = new Tween(-Math.PI/8, Math.PI/8, 60, EASES.SINE, BEHAVIORS.REVERSE);
+const bodyRotationTween     = new Tween(-Math.PI/16, Math.PI/16, 40, EASES.SINE, BEHAVIORS.REVERSE);
+const leftArmRotationTween  = new Tween(Math.PI/4, Math.PI/2, 20, EASES.SINE, BEHAVIORS.REVERSE);
+const rightArmRotationTween = new Tween(-Math.PI/6, Math.PI/6, 120, EASES.SINE, BEHAVIORS.REVERSE);
+
 // Game Variables
 let score = 0;
 let frameCount = 0;
@@ -122,6 +128,12 @@ function handleInput() {
       break;
 
     case GAME_STATES.OVER:
+      rabi.xPos = canvas.width / 2;
+      rabi.headRotation     = headRotationTween.step();
+      rabi.bodyRotation     = bodyRotationTween.step();
+      rabi.leftArmRotation  = leftArmRotationTween.step();
+      rabi.rightArmRotation = rightArmRotationTween.step();
+      rabi.draw();
       ctx.fillText('Game Over', 100, 100);
       ctx.fillText('You\'ve collected ' + score + ' menoras out of ' + numberOfMenoras, 200, 200);
       break;
